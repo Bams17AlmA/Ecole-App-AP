@@ -4,61 +4,43 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig(() => {
-  return {
-    plugins: [
-      react(),
-      tailwindcss(),
-      VitePWA({
-        registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon.svg'],
-        manifest: {
-          id: '/',
-          name: 'EduMaster Pro - Gestion Scolaire',
-          short_name: 'EduMaster',
-          description: 'Système complet de gestion scolaire : élèves, notes, bulletins, finances, horaires et présences.',
-          theme_color: '#1e3a8a',
-          background_color: '#f8fafc',
-          display: 'standalone',
-          start_url: '/',
-          scope: '/',
-          icons: [
-            {
-              src: '/pwa-192x192.png',
-              sizes: '192x192',
-              type: 'image/png',
-              purpose: 'any',
-            },
-            {
-              src: '/pwa-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'any',
-            },
-            {
-              src: '/pwa-maskable-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'maskable',
-            },
-          ],
-        },
-        workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
-        },
-        devOptions: {
-          enabled: true,
-        },
-      }),
-    ],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
+const base = process.env.GITHUB_ACTIONS === 'true' ? '/Ecole-App-AP/' : '/';
+
+export default defineConfig(() => ({
+  base,
+  plugins: [
+    react(),
+    tailwindcss(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['icon.svg'],
+      manifest: {
+        id: base,
+        name: 'EduMaster Pro — Gestion Scolaire',
+        short_name: 'EduMaster',
+        description: 'Gestion scolaire : élèves, classes, enseignants, présences, notes, bulletins et finances.',
+        lang: 'fr-CD',
+        start_url: base,
+        scope: base,
+        display: 'standalone',
+        display_override: ['standalone', 'minimal-ui'],
+        orientation: 'any',
+        theme_color: '#1e3a8a',
+        background_color: '#f8fafc',
+        categories: ['education', 'productivity'],
+        icons: [
+          { src: `${base}icon.svg`, sizes: 'any', type: 'image/svg+xml', purpose: 'any' }
+        ],
       },
-    },
-    server: {
-      hmr: process.env.DISABLE_HMR !== 'true',
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-  };
-});
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2}'],
+      },
+      devOptions: { enabled: true },
+    }),
+  ],
+  resolve: { alias: { '@': path.resolve(__dirname, '.') } },
+  server: {
+    hmr: process.env.DISABLE_HMR !== 'true',
+    watch: process.env.DISABLE_HMR === 'true' ? null : {},
+  },
+}));
