@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#grad1)"/>
+  <!-- Graduation Cap & School Crest -->
+  <g transform="translate(64, 76)">
+    <!-- Mortarboard Top -->
+    <path d="M192 48 L352 120 L192 192 L32 120 Z" fill="#ffffff" filter="drop-shadow(0 8px 16px rgba(0,0,0,0.15))"/>
+    <!-- Mortarboard Cap underside -->
+    <path d="M96 150 V 224 C 96 260, 288 260, 288 224 V 150 L 192 192 Z" fill="#e2e8f0" opacity="0.95"/>
+    <!-- Tassel -->
+    <path d="M320 134 L340 180 V240" stroke="url(#accentGrad)" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="340" cy="246" r="10" fill="#f59e0b"/>
+    <!-- Book / Crest Emblem Base -->
+    <g transform="translate(64, 210)">
+      <path d="M128 40 C 90 20, 30 20, 0 32 V 130 C 30 118, 90 118, 128 138 C 166 118, 226 118, 256 130 V 32 C 226 20, 166 20, 128 40 Z" fill="#ffffff" opacity="0.95"/>
+      <path d="M128 40 V 138" stroke="#cbd5e1" stroke-width="4"/>
+      <!-- Star of excellence -->
+      <polygon points="128,60 133,75 149,75 136,84 141,99 128,90 115,99 120,84 107,75 123,75" fill="url(#accentGrad)" />
+    </g>
+  </g>
+</svg>

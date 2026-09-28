@@ -1,0 +1,7 @@
+{
+  "name": "EduMaster Pro - Système de Gestion Scolaire",
+  "description": "Système intégré et complet de gestion scolaire (ERP) : établissements, élèves, inscriptions, classes, enseignants, emplois du temps, présences, notes, bulletins officiels, finances, reçus, traçabilité et mode PWA hors-ligne.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
